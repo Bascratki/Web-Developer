@@ -1,0 +1,35 @@
+# Arquivos e diretórios a serem ignorados pelo Git
+
+# Arquivos de configuração
+*.env
+.env.local
+.env.*.local
+
+# Dependências geradas
+/node_modules
+/dist
+
+# Arquivos de build
+/build
+/out
+
+# Arquivos de log
+/log
+*.log
+
+# Arquivos temporários
+.tmp
+.temp
+.temp-*
+
+# Arquivos de cache
+.cache
+.cached
+
+# Arquivos de backup
+*.bak
+*.backup
+
+# Arquivos de IDE
+.idea
+.vscode
