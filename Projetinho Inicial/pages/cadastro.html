@@ -18,32 +18,30 @@
             <div class="form-content">
                 <label for="username">Nome do usuário</label>
                 <input type="text" id="username" placeholder="Digite o nome do usuário:">
-                <a>Aqui vai a mensagem de erro</a>
+                <span class="error-message"></span> <!-- Elemento apropriado para mensagens de erro -->
             </div>
 
             <div class="form-content">
                 <label for="email">Email</label>
                 <input type="email" id="email" placeholder="Digite o seu email:">
-                <a>Aqui vai a mensagem de erro</a>
-
+                <span class="error-message"></span>
             </div>
             <div class="form-content">
                 <label for="senha">Senha</label>
                 <input type="password" id="senha" placeholder="Digite sua senha:">
-                <a>Aqui vai a mensagem de erro</a>
+                <span class="error-message"></span>
             </div>
             <div class="form-content">
-                <label for="confirmacaosenha">Confirme sua senha</label>
+                <label for="senhaConfirmacao">Confirme sua senha</label>
                 <input type="password" id="senhaConfirmacao" placeholder="Digite sua senha novamente:">
-                <a>Aqui vai a mensagem de erro</a>
+                <span class="error-message"></span>
             </div>
-            <button type="submit">Confirmar</button>
-            <button type="submit">Voltar</button>
+            <button onclick="checkForm()" type="button">Confirmar</button>
+            <button type="button" onclick="window.location.href='./index.html';">Voltar</button>
         </form>
-
     </div>
     
-<script src="./script.js"></script>
+<script src="js/funcoes.js"></script>
 
 </body>
 </html>
