@@ -3,26 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="../css/styles.css">
-
-    <title>Contas</title>
+    <title>Farmacia</title>
+    <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
-    <div class="container">
-        <section class="header">
-            <h2>Como deseja entrar?</h2>
-        </section>
-
-        <form id="form" class="form">
-
-            <button type="button" onclick="window.location.href='./adm.html';">Administração</button>
-            <button type="button" onclick="window.location.href='./usuario.html';">Usuário</button>
-            <button type="button" onclick="window.location.href='./cadastro.html';">Cadastro</button>
-            
-        </form>
-
+    <div class="navbar">
+        <div class="header-inner-content">
+            <h1 class="logo">Famarcia<span>Store</span></h1>
+            <nav>
+                <ul>
+                    <li>Home</li>
+                    <li onclick="window.location.href='./escolhaConta.html'"">Login</li>
+                    <li>Produtos</li>
+                    <li>Carrinho</li>
+                </ul>
+            </nav>
+            <div class="nav-icon-container">
+                <img src = "./imgs/cart.png"/>
+                <img src = "./imgs/menu.png" class="menu-button"/>
+            </div>
+        </div>
     </div>
-    
+
+    <header>
+        <div class="header-inner-content">
+            <div class="header-bottom-side">
+                <div class="header-bottom-side-left">
+                    <h2>Está com dor de cabeça?</h2>
+                    <p>Os analgésicos, como o paracetamol (Tylenol) ou a dipirona (Novalgina), são remédios indicados para dor de cabeça, pois que agem inibindo a produção de substâncias no cérebro responsáveis pela dor, como as prostaglandinas ou ciclooxigenases. Veja como tomar corretamente o paracetamol ou a dipirona</p>
+                    <button>Ver agora</button>
+                    <div class="header-bottom-side-right">
+                        <img src="./imgs/tylenol.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!--Main-->
+    <main>
+        
+    </main>
+
+    <script>
+        const navbar = document.querySelector(".navabr");
+        const menuButton = document.querySelector(".menu-buttom");
+        menuButton.addEventListener('click', () => {
+            navbar.classList.toggle("show-menu");
+        });
+    </script>
 </body>
 </html>

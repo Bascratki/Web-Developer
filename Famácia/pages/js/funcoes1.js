@@ -1,12 +1,16 @@
 const form = document.getElementById("form");
 
 const username = document.getElementById("username");
+
 const email = document.getElementById("email");
+
 const senha = document.getElementById("senha");
+
 const senhaConfirmacao = document.getElementById("senhaConfirmacao");
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
+
   checkForm();
 });
 
@@ -47,11 +51,11 @@ function checkInputSenha() {
 
 function checkInputSenhaConfirmacao() {
   const senhaValue = senha.value;
-  const senhaConfirmacaoValue = senhaConfirmacao.value;
+  const confirmaçãoSenhaValue = senhaConfirmacao.value;
 
   if (senhaConfirmacaoValue === "") {
-    errorInput(senhaConfirmacao, "A confirmação de senha é obrigatória.");
-  } else if (senhaConfirmacaoValue !== senhaValue) {
+    errorInput(senhaConfirmacaoValue, "A confirmação de senha é obrigatória.");
+  } else if (senhaConfirmacaoValue.length !== senhaValue) {
     errorInput(senhaConfirmacao, "As senhas não são iguais.");
   } else {
     const formItem = senhaConfirmacao.parentElement;
@@ -65,7 +69,7 @@ function checkForm() {
   checkInputSenha();
   checkInputSenhaConfirmacao();
 
-  const formItems = form.querySelectorAll(".form-content");
+  const formItem = form.querySelectorAll(".form-content");
 
   const isValid = [...formItems].every((item) => {
     return item.className === "form-content";
@@ -78,7 +82,7 @@ function checkForm() {
 
 function errorInput(input, message) {
   const formItem = input.parentElement;
-  const textMessage = formItem.querySelector("span"); // Supondo que você use <span> para exibir a mensagem de erro
+  const textMessage = formItem.querySelector("a");
 
   textMessage.innerText = message;
 
