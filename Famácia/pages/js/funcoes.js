@@ -1,14 +1,45 @@
-const form = document.getElementById("form");
-
-const username = document.getElementById("username");
-const email = document.getElementById("email");
-const senha = document.getElementById("senha");
-const senhaConfirmacao = document.getElementById("senhaConfirmacao");
-
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-  checkForm();
+document.getElementById("form").addEventListener("submit", (event) => {
+  event.preventDefault(); // Evita o envio padrão do formulário
+  if (checkForm()) {
+    sendData();
+  }
 });
+
+function sendData() {
+  const form = document.getElementById("form");
+  const formData = new FormData(form);
+
+  fetch("inserir_usuario.php", {
+    method: "POST",
+    body: formData,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        alert("Cadastro realizado com sucesso!");
+        form.reset(); // Limpa o formulário após sucesso
+      } else {
+        alert("Erro ao cadastrar usuário: " + data.message);
+      }
+    })
+    .catch((error) => {
+      console.error("Erro:", error);
+      alert("Erro ao processar o cadastro.");
+    });
+}
+
+// Funções de validação devem ser ajustadas para retornar `true` se tudo estiver correto
+function checkForm() {
+  checkInputUsername();
+  checkInputEmail();
+  checkInputEndereco();
+  checkInputCelular();
+  checkInputSenha();
+  checkInputSenhaConfirmacao();
+
+  const formItems = form.querySelectorAll(".form-content");
+  return [...formItems].every((item) => item.className === "form-content"); // Verifica se não há erros
+}
 
 function checkInputUsername() {
   const usernameValue = username.value;
@@ -28,6 +59,28 @@ function checkInputEmail() {
     errorInput(email, "Campo obrigatório.");
   } else {
     const formItem = email.parentElement;
+    formItem.className = "form-content";
+  }
+}
+
+function checkInputEndereco() {
+  const enderecoValue = endereco.value;
+
+  if (enderecoValue === "") {
+    errorInput(endereco, "Campo obrigatório.");
+  } else {
+    const formItem = endereco.parentElement;
+    formItem.className = "form-content";
+  }
+}
+
+function checkInputCelular() {
+  const celularValue = celular.value;
+
+  if (celularValue === "") {
+    errorInput(celular, "Campo obrigatório.");
+  } else {
+    const formItem = celular.parentElement;
     formItem.className = "form-content";
   }
 }
@@ -57,30 +110,4 @@ function checkInputSenhaConfirmacao() {
     const formItem = senhaConfirmacao.parentElement;
     formItem.className = "form-content";
   }
-}
-
-function checkForm() {
-  checkInputUsername();
-  checkInputEmail();
-  checkInputSenha();
-  checkInputSenhaConfirmacao();
-
-  const formItems = form.querySelectorAll(".form-content");
-
-  const isValid = [...formItems].every((item) => {
-    return item.className === "form-content";
-  });
-
-  if (isValid) {
-    alert("Cadastro realizado com sucesso");
-  }
-}
-
-function errorInput(input, message) {
-  const formItem = input.parentElement;
-  const textMessage = formItem.querySelector("span"); // Supondo que você use <span> para exibir a mensagem de erro
-
-  textMessage.innerText = message;
-
-  formItem.className = "form-content error";
 }

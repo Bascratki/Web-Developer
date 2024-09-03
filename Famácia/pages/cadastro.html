@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,40 +9,58 @@
 
     <title>Nova conta</title>
 </head>
+
 <body>
     <div class="container">
         <section class="header">
             <h2>Nova conta</h2>
         </section>
 
-        <form id="form" class="form">
+        <form id="form" class="form" onsubmit="return checkForm();">
             <div class="form-content">
                 <label for="username">Nome do usuário</label>
-                <input type="text" id="username" placeholder="Digite o nome do usuário:">
-                <span class="error-message"></span> <!-- Elemento apropriado para mensagens de erro -->
+                <input type="text" id="username" name="username" placeholder="Digite o nome do usuário:">
+                <span class="error-message"></span>
             </div>
 
             <div class="form-content">
                 <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Digite o seu email:">
+                <input type="email" id="email" name="email" placeholder="Digite o seu email:">
                 <span class="error-message"></span>
             </div>
+
+            <div class="form-content">
+                <label for="endereco">Endereço</label>
+                <input type="text" id="endereco" name="endereco" placeholder="Digite o seu endereço:">
+                <span class="error-message"></span>
+            </div>
+
+            <div class="form-content">
+                <label for="celular">Celular</label>
+                <input type="text" id="celular" name="celular" placeholder="Digite o seu celular:">
+                <span class="error-message"></span>
+            </div>
+
             <div class="form-content">
                 <label for="senha">Senha</label>
-                <input type="password" id="senha" placeholder="Digite sua senha:">
+                <input type="password" id="senha" name="senha" placeholder="Digite sua senha:">
                 <span class="error-message"></span>
             </div>
+
             <div class="form-content">
                 <label for="senhaConfirmacao">Confirme sua senha</label>
-                <input type="password" id="senhaConfirmacao" placeholder="Digite sua senha novamente:">
+                <input type="password" id="senhaConfirmacao" name="senhaConfirmacao"
+                    placeholder="Digite sua senha novamente:">
                 <span class="error-message"></span>
             </div>
-            <button onclick="checkForm()" type="button">Confirmar</button>
+
+            <button type="submit">Confirmar</button>
             <button type="button" onclick="window.location.href='./escolhaConta.html'">Voltar</button>
         </form>
     </div>
-    
-<script src="js/funcoes.js"></script>
+
+    <script src="js/funcoes.js"></script>
 
 </body>
+
 </html>
