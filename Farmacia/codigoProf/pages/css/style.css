@@ -1,0 +1,9 @@
+.content {
+    background-image: url('../images/image.png');
+    height: 66vh;
+}
+
+.labelValidacao {
+    color: red;
+    display: none;
+}
