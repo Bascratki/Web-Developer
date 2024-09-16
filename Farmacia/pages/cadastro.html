@@ -16,7 +16,7 @@
             <h2>Nova conta</h2>
         </section>
 
-        <form id="form" class="form" onsubmit="return checkForm();">
+        <form id="form" class="form" onsubmit="checkForm(event)">
             <div class="form-content">
                 <label for="username">Nome do usuário</label>
                 <input type="text" id="username" name="username" placeholder="Digite o nome do usuário:">
@@ -54,7 +54,7 @@
                 <span class="error-message"></span>
             </div>
 
-            <button type="submit">Confirmar</button>
+            <button type="submit">Cadastrar</button>
             <button type="button" onclick="window.location.href='./escolhaConta.html'">Voltar</button>
         </form>
     </div>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Cadastro</title>
+    <link rel="stylesheet" href="./css/listaCadastro.css">
+</head>
+<body>
+    <h1>Lista de Cadastro</h1>
+    <ul id="cadastro-lista">
+        <!-- Os itens da lista serão inseridos aqui -->
+    </ul>
+
+    <script>
+        // Exemplo de dados de cadastro
+        const cadastros = [
+            { nome: 'João Silva', email: 'joao@example.com' },
+            { nome: 'Maria Oliveira', email: 'maria@example.com' },
+            { nome: 'Carlos Souza', email: 'carlos@example.com' }
+        ];
+
+        // Função para renderizar a lista de cadastros
+        function renderizarLista() {
+            const lista = document.getElementById('cadastro-lista');
+            lista.innerHTML = '';
+
+            cadastros.forEach(cadastro => {
+                const li = document.createElement('li');
+                li.textContent = `Nome: ${cadastro.nome}, Email: ${cadastro.email}`;
+                lista.appendChild(li);
+            });
+        }
+
+        // Renderiza a lista ao carregar a página
+        window.onload = renderizarLista;
+    </script>
+</body>
+</html>

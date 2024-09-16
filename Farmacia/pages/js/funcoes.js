@@ -28,7 +28,6 @@ function sendData() {
     });
 }
 
-// Funções de validação devem ser ajustadas para retornar `true` se tudo estiver correto
 function checkForm() {
   checkInputUsername();
   checkInputEmail();
@@ -38,7 +37,7 @@ function checkForm() {
   checkInputSenhaConfirmacao();
 
   const formItems = form.querySelectorAll(".form-content");
-  return [...formItems].every((item) => item.className === "form-content"); // Verifica se não há erros
+  return [...formItems].every((item) => !item.classList.contains("error")); // Verifica se não há erros
 }
 
 function checkInputUsername() {
@@ -47,8 +46,7 @@ function checkInputUsername() {
   if (usernameValue === "") {
     errorInput(username, "Campo obrigatório.");
   } else {
-    const formItem = username.parentElement;
-    formItem.className = "form-content";
+    resetErrorInput(username);
   }
 }
 
@@ -58,8 +56,7 @@ function checkInputEmail() {
   if (emailValue === "") {
     errorInput(email, "Campo obrigatório.");
   } else {
-    const formItem = email.parentElement;
-    formItem.className = "form-content";
+    resetErrorInput(email);
   }
 }
 
@@ -69,8 +66,7 @@ function checkInputEndereco() {
   if (enderecoValue === "") {
     errorInput(endereco, "Campo obrigatório.");
   } else {
-    const formItem = endereco.parentElement;
-    formItem.className = "form-content";
+    resetErrorInput(endereco);
   }
 }
 
@@ -80,8 +76,7 @@ function checkInputCelular() {
   if (celularValue === "") {
     errorInput(celular, "Campo obrigatório.");
   } else {
-    const formItem = celular.parentElement;
-    formItem.className = "form-content";
+    resetErrorInput(celular);
   }
 }
 
@@ -93,8 +88,7 @@ function checkInputSenha() {
   } else if (senhaValue.length < 8) {
     errorInput(senha, "A senha precisa ter no mínimo 8 caracteres.");
   } else {
-    const formItem = senha.parentElement;
-    formItem.className = "form-content";
+    resetErrorInput(senha);
   }
 }
 
@@ -107,7 +101,31 @@ function checkInputSenhaConfirmacao() {
   } else if (senhaConfirmacaoValue !== senhaValue) {
     errorInput(senhaConfirmacao, "As senhas não são iguais.");
   } else {
-    const formItem = senhaConfirmacao.parentElement;
-    formItem.className = "form-content";
+    resetErrorInput(senhaConfirmacao);
   }
 }
+
+function errorInput(input, message) {
+  const formItem = input.parentElement;
+  const textMessage = formItem.querySelector("a");
+
+  textMessage.innerText = message;
+  formItem.classList.add("error");
+}
+
+function resetErrorInput(input) {
+  const formItem = input.parentElement;
+  const textMessage = formItem.querySelector("a");
+
+  textMessage.innerText = ""; // Limpa a mensagem de erro
+  formItem.classList.remove("error");
+}
+
+// Elementos do formulário
+const form = document.getElementById("form");
+const username = document.getElementById("username");
+const email = document.getElementById("email");
+const endereco = document.getElementById("endereco");
+const celular = document.getElementById("celular");
+const senha = document.getElementById("senha");
+const senhaConfirmacao = document.getElementById("senhaConfirmacao");
